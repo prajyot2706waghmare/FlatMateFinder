@@ -96,17 +96,6 @@ This project is licensed under the MIT License — free to use, modify, and dist
 
 Made with ❤️ by Prajyot Waghmare
 
-pgsql
-Copy code
-
----
-
-You can now copy **everything in one go** and save it as `README.md`.  
-
-If you want, I can also prepare a **version with badges (GitHub stars, issues, etc.) and screenshots placeholders** to make it look professional on GitHub. Do you want me to do that?
-
-
-
 
 
 
