@@ -1,6 +1,6 @@
 import express from "express";
-import RoomShare from "../src/models/RoomShare.js"; // adjust path if needed
-
+import RoomShare from "../models/RoomShare.js"; // adjust path if needed
+import User from "../models/user.js";
 const router = express.Router();
 
 // 📌 GET all room shares

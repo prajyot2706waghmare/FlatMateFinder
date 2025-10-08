@@ -216,13 +216,15 @@
 import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
+import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
+
 // import dotenv from "dotenv";
 import connectDB from "./src/config/database.js";
 import userAuthRoutes from "./routes/userAuth.js";
 import flatRoutes from "./routes/flats.js";
 import flatmateRoutes from "./routes/flatmate.js"; // ✅ import once
-import roomShareRoutes from "./routes/roomShare.js"; // ✅ new route import
+import roomShareRoutes from "./routes/roomshare.js"; // ✅ new route import
 dotenv.config(); // Load env variables
 
 
@@ -234,6 +236,11 @@ cloudinary.config({
 
 const app = express(); // ✅ initialize app first
 const PORT = process.env.PORT || 5000;
+
+
+// ✅ Multer setup for temporary file storage
+const storage = multer.diskStorage({});
+const upload = multer({ storage });
 
 // ✅ Middleware
 app.use(cors({ origin: "http://localhost:5173" })); // frontend URL
