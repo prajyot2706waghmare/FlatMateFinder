@@ -25,6 +25,7 @@
 //     </form>
 //   );
 // }
+
 import React, { useState } from "react";
 import api from "../services/api"; // ✅ Your API service
 
@@ -32,10 +33,9 @@ export default function AddRoomShare() {
   const [form, setForm] = useState({
     title: "",
     location: "",
+    rent: "",
     vacancy: "",
-    price: "",
     description: "",
-    contact: "",
   });
 
   const handleChange = (e) => {
@@ -47,18 +47,17 @@ export default function AddRoomShare() {
     e.preventDefault();
     try {
       await api.createRoomShare(form);
-      alert("✅ Room share added successfully!");
+      alert("✅ Room added successfully!");
       setForm({
         title: "",
         location: "",
+        rent: "",
         vacancy: "",
-        price: "",
         description: "",
-        contact: "",
       });
     } catch (err) {
       console.error(err);
-      alert("❌ Error adding room share");
+      alert("❌ Error adding room");
     }
   };
 
@@ -69,7 +68,7 @@ export default function AddRoomShare() {
         className="bg-white shadow-md rounded-2xl p-8 w-full max-w-md space-y-4"
       >
         <h2 className="text-2xl font-bold text-center text-indigo-600">
-          Add Room Share
+          Add Room
         </h2>
 
         <input
@@ -77,7 +76,7 @@ export default function AddRoomShare() {
           name="title"
           value={form.title}
           onChange={handleChange}
-          placeholder="Title (e.g. 2 BHK Flat)"
+          placeholder="Title (e.g. Single Room in Baner)"
           className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           required
         />
@@ -87,7 +86,17 @@ export default function AddRoomShare() {
           name="location"
           value={form.location}
           onChange={handleChange}
-          placeholder="Location"
+          placeholder="Location (e.g. Pune)"
+          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
+          required
+        />
+
+        <input
+          type="number"
+          name="rent"
+          value={form.rent}
+          onChange={handleChange}
+          placeholder="Rent (per month)"
           className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           required
         />
@@ -97,17 +106,7 @@ export default function AddRoomShare() {
           name="vacancy"
           value={form.vacancy}
           onChange={handleChange}
-          placeholder="Vacancy (No. of beds available)"
-          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
-          required
-        />
-
-        <input
-          type="number"
-          name="price"
-          value={form.price}
-          onChange={handleChange}
-          placeholder="Price (per month)"
+          placeholder="Vacancy (e.g. 1)"
           className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           required
         />
@@ -116,26 +115,16 @@ export default function AddRoomShare() {
           name="description"
           value={form.description}
           onChange={handleChange}
-          placeholder="Description (Amenities, rules, etc.)"
+          placeholder="Description (e.g. Fully furnished with attached bathroom)"
           rows="3"
           className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
         ></textarea>
-
-        <input
-          type="text"
-          name="contact"
-          value={form.contact}
-          onChange={handleChange}
-          placeholder="Contact Number"
-          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
-          required
-        />
 
         <button
           type="submit"
           className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-200"
         >
-          Add Room Share
+          Add Room
         </button>
       </form>
     </div>

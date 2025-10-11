@@ -145,6 +145,7 @@ import Flat from "./pages/Flat";
 import FlatDetails from "./pages/FlatDetails";
 import Profile from "./pages/Profile";
 import AddFlat from "./pages/AddFlat"; 
+import FlatHome from "./components/FlatHome";
 import AddFlatmate from "./pages/AddFlatmate";
 import FAQ from "./components/FAQ";
 import AddFlatmateForm from "./pages/AddFlatmateForm";
@@ -153,7 +154,7 @@ import FlatmateDetails from "./pages/FlatmateDetails";
 import AddFlatmateHome from "./pages/AddFlatmate"; // your earlier AddFlatmate options page
 import BrowseRoomShare from "./pages/BrowseRoomShare";
 import AddRoomShare from "./pages/RoomShare";
-//import RoomShareDetails from "./pages/RoomShareDetails";
+import RoomShareDetails from "./pages/RoomShareDetails";
 
 //import FindFlatmate from "./pages/Findflatmate";  // ✅ match file name
 
@@ -162,6 +163,7 @@ import PostRoomModal from "./components/modals/PostRoomModal";
 
 import "./App.css";
 import "./index.css";
+import FlatHero from "./components/FlatHome";
 
 function App() {
   return (
@@ -173,6 +175,7 @@ function App() {
           <Route path="/" element={<Hero />} />
           <Route path="/rooms" element={<Rooms />} />
           <Route path="/dashboard" element={<Hero />} />
+          <Route path="/flat-home" element={<FlatHome/>}/>
           <Route path="/flats" element={<Flat />} />
           <Route path="/flats/:id" element={<FlatDetails />} />
           <Route path="/add-flat" element={<AddFlat />} />
@@ -188,7 +191,7 @@ function App() {
           <Route path="/flatmate" element={<AddFlatmateHome />} />
           <Route path="/browseroomshare" element={<BrowseRoomShare />} />
           <Route path="/roomshare" element={<AddRoomShare />} />
-          {/* <Route path="/roomshare/:id" element={<RoomShareDetails />} /> */}
+          <Route path="/roomshare/:id" element={<RoomShareDetails />} />
         </Routes>
 
         <Footer />

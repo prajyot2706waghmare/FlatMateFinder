@@ -246,6 +246,7 @@ const upload = multer({ storage });
 app.use(cors({ origin: "http://localhost:5173" })); // frontend URL
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
+app.use(express.urlencoded({ extended: true }));
 
 // ✅ Routes
 app.use("/userauth", userAuthRoutes);

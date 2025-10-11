@@ -50,7 +50,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
-      <h1 className="text-2xl font-bold text-indigo-600">FlatMate Finder</h1>
+      <Link to="/dashboard"><h1 className="text-2xl font-bold text-indigo-600">FlatMate Finder</h1></Link>
       <div className="space-x-4">
         {/* Always show Dashboard */}
         <Link to="/dashboard">
