@@ -1,6 +1,6 @@
 import express from "express";
 import RoomShare from "../models/RoomShare.js"; // adjust path if needed
-import User from "../models/user.js";
+
 const router = express.Router();
 
 // 📌 GET all room shares
@@ -17,6 +17,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const share = await RoomShare.findById(req.params.id);
+    console.log("this is data :" ,share)
     if (!share) return res.status(404).json({ error: "Room share not found" });
     res.json(share);
   } catch (err) {
@@ -26,6 +27,7 @@ router.get("/:id", async (req, res) => {
 
 // 📌 POST create new room share
 router.post("/", async (req, res) => {
+  console.log(req.body);
   try {
     const newShare = new RoomShare(req.body);
     await newShare.save();
