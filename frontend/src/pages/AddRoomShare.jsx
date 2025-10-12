@@ -27,7 +27,7 @@
 // }
 
 import React, { useState } from "react";
-import api from "../services/api"; // ✅ Your API service
+import { addRoomShare } from "../api/shareRoomApi"; // ✅ Ensure this function returns a Promise
 
 export default function AddRoomShare() {
   const [form, setForm] = useState({
@@ -46,7 +46,7 @@ export default function AddRoomShare() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.createRoomShare(form);
+      await addRoomShare(form); // ✅ Await the API call to handle async properly
       alert("✅ Room added successfully!");
       setForm({
         title: "",
@@ -56,7 +56,7 @@ export default function AddRoomShare() {
         description: "",
       });
     } catch (err) {
-      console.error(err);
+      console.error("Error adding room:", err);
       alert("❌ Error adding room");
     }
   };
@@ -97,6 +97,7 @@ export default function AddRoomShare() {
           value={form.rent}
           onChange={handleChange}
           placeholder="Rent (per month)"
+          min="0"
           className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           required
         />
@@ -107,6 +108,7 @@ export default function AddRoomShare() {
           value={form.vacancy}
           onChange={handleChange}
           placeholder="Vacancy (e.g. 1)"
+          min="1"
           className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
           required
         />

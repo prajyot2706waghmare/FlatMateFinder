@@ -27,7 +27,6 @@ router.get("/:id", async (req, res) => {
 
 // 📌 POST create new room share
 router.post("/", async (req, res) => {
-  console.log(req.body);
   try {
     const newShare = new RoomShare(req.body);
     await newShare.save();

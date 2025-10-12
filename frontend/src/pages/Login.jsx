@@ -89,6 +89,8 @@ function Login() {
       
       // Redirect to dashboard/home page
       setTimeout(() => navigate("/dashboard"), 1000);
+      // navigate("/dashboard");
+
     } catch (err) {
       console.error("❌ Login error:", err.response?.data || err.message);
       setMessage(err.response?.data?.error || "Login failed");

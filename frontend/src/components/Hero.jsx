@@ -36,7 +36,7 @@ export default function Dashboard() {
         </p>
         <input
           type="text"
-          placeholder="Enter location..."
+          placeholder="Enter location here..."
           className="px-4 py-2 w-1/2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
       </section>
@@ -59,6 +59,14 @@ export default function Dashboard() {
           <Home className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
           <h3 className="text-xl font-semibold mb-2">FlateMates</h3>
           <p className="text-gray-500">Go to add flatemates or browse flatemate</p>
+        </Link>
+        <Link
+          to="/share-home"
+          className="bg-white shadow-md rounded-2xl p-6 text-center hover:shadow-lg transition"
+        >
+          <Home className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
+          <h3 className="text-xl font-semibold mb-2">Share Room</h3>
+          <p className="text-gray-500">Go to share room or add room</p>
         </Link>
       </section>
 

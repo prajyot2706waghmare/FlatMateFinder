@@ -10,7 +10,7 @@ const API = axios.create({
 // ➕ Add a new room share
 export const addRoomShare = (roomData) => {
   console.log("Adding new room share with data:", roomData);
-  return API.post("/roomshares", roomData);
+  return API.post("/roomshare", roomData);
 };
 // 📋 Get all shared rooms
 export const getShareRooms = () => {

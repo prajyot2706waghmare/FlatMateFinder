@@ -53,3 +53,18 @@
 //   <h3 className="font-semibold mt-2">Find Flatmates</h3>
 //   <p className="text-sm text-gray-500">Browse people looking for roommates</p>
 // </Link>
+import React from 'react'
+import Navbar from '../components/Navbar'
+import Hero from '../components/Hero'
+import Footer from '../components/Footer'
+function Dashboard() {
+  return (
+    <div>
+      <Navbar/>
+      <Hero/>
+      <Footer/>
+    </div>
+  )
+}
+
+export default Dashboard
