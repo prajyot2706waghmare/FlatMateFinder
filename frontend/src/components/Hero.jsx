@@ -52,6 +52,14 @@ export default function Dashboard() {
           <h3 className="text-xl font-semibold mb-2">Find Flats / Rooms</h3>
           <p className="text-gray-500">Browse available listings easily</p>
         </Link>
+         <Link
+          to="/flat-home"
+          className="bg-white shadow-md rounded-2xl p-6 text-center hover:shadow-lg transition"
+        >
+          <Search className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
+          <h3 className="text-xl font-semibold mb-2">Share rooms</h3>
+          <p className="text-gray-500">Browse available listings easily</p>
+        </Link>
         <Link
           to="/flatmate"
           className="bg-white shadow-md rounded-2xl p-6 text-center hover:shadow-lg transition"
