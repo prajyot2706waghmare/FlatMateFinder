@@ -139,6 +139,7 @@ import Hero from "./components/Hero";
 import Rooms from "./components/Rooms";
 import Footer from "./components/Footer";
 import RoomShareHome from "./components/RoomShareHome"
+import ProtectedRoute from "./components/ProtectdRoute";
 
 import Login from "./pages/Login";  
 import Register from "./pages/Register"; 
@@ -156,6 +157,7 @@ import AddFlatmateHome from "./pages/AddFlatmate"; // your earlier AddFlatmate o
 import BrowseRoomShare from "./pages/BrowseRoomShare";
 import AddRoomShare from "./pages/AddRoomShare";
 import RoomShareDetails from "./pages/RoomShareDetails";
+import LandingPage from "./pages/Landing";
 //import FindFlatmate from "./pages/Findflatmate";  // ✅ match file name
 
 // Modals
@@ -171,11 +173,10 @@ function App() {
     <Router>
       <div className="font-sans">
         <Navbar />
-
         <Routes>
-          <Route path="/" element={<Hero />} />
+          {/* <Route path="/" element={<Hero />} /> */}
           <Route path="/rooms" element={<Rooms />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<> <Dashboard /></>} />
           <Route path="/flat-home" element={<FlatHome/>}/>
           <Route path="/flats" element={<Flat />} />
           <Route path="/flats/:id" element={<FlatDetails />} />
@@ -194,6 +195,7 @@ function App() {
           <Route path="/roomshare" element={<AddRoomShare />} />
           <Route path="/share-home" element={<RoomShareHome />} />
           <Route path="/roomshare/:id" element={<RoomShareDetails />} />
+          <Route path="/" element={<LandingPage/>}></Route>
         </Routes>
 
         <Footer />
