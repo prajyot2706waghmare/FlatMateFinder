@@ -158,6 +158,7 @@ import BrowseRoomShare from "./pages/BrowseRoomShare";
 import AddRoomShare from "./pages/AddRoomShare";
 import RoomShareDetails from "./pages/RoomShareDetails";
 import LandingPage from "./pages/Landing";
+import PropertyCalculator from "./pages/PropertyCalculator";
 //import FindFlatmate from "./pages/Findflatmate";  // ✅ match file name
 
 // Modals
@@ -196,6 +197,7 @@ function App() {
           <Route path="/share-home" element={<RoomShareHome />} />
           <Route path="/roomshare/:id" element={<RoomShareDetails />} />
           <Route path="/" element={<LandingPage/>}></Route>
+          <Route path="/property-calculator" element={<><PropertyCalculator/></>}></Route>
         </Routes>
 
         <Footer />

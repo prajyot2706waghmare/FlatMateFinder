@@ -1619,19 +1619,6 @@ const Flat = () => {
     <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"></div>
   </div>
   
-  <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-16">
-      <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
-        Got 
-        <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent"> Questions?</span>
-      </h2>
-      <p className="text-xl text-gray-700">Find answers to commonly asked questions</p>
-    </div>
-    
-    <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-2xl">
-      <FAQ />
-    </div>
-  </div>
 </div>
 
 

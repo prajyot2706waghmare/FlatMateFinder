@@ -22,7 +22,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Home, PlusCircle, Search } from "lucide-react";
-
+import FAQ from "../components/FAQ";
 export default function Dashboard() {
   return (
     <div>
@@ -70,7 +70,19 @@ export default function Dashboard() {
         </Link>
       </section>
 
-      {/* Stats Section */}
+     
+      
+  <div className="relative z-10 max-w-6xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      
+      <p className="text-xl text-gray-700">Find answers to commonly asked questions</p>
+    </div>
+    
+    <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-2xl">
+      <FAQ />
+    </div>
+  </div>
+   {/* Stats Section */}
       <section className="bg-indigo-600 text-white mt-16 py-12">
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 text-center gap-8">
           <div>
