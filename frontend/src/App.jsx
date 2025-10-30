@@ -160,7 +160,6 @@ import RoomShareDetails from "./pages/RoomShareDetails";
 import LandingPage from "./pages/Landing";
 import PropertyCalculator from "./pages/PropertyCalculator";
 //import FindFlatmate from "./pages/Findflatmate";  // ✅ match file name
-
 // Modals
 import PostRoomModal from "./components/modals/PostRoomModal";
 

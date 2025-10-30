@@ -1261,7 +1261,7 @@ const Flat = () => {
     flat.title?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const tabs = ["BUY", "RENT", "COMMERCIAL", "PG/CO-LIVING", "PLOTS"];
+  const tabs = ["BUY", "RENT", "PLOTS"];
 
   // Modern loading component with glassmorphism
   if (loading) {

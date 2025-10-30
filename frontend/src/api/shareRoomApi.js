@@ -33,3 +33,20 @@ export const deleteRoomShare = (id) => {
   console.log(`Deleting room share with ID: ${id}`);
   return API.delete(`/roomshares/${id}`);
 };
+
+// ====================== 📩 CONTACT ROUTE ======================
+
+// ➕ Create a new contact (for a room share)
+export const createContactApi = async (payload) => {
+  // payload: { roomId, name, phone, email, consent, interestedInLoan }
+  console.log("Submitting contact details:", payload);
+
+  try {
+    const { data } = await API.post("/roomshare/contact", payload);
+    console.log("✅ Contact created successfully:", data);
+    return data;
+  } catch (err) {
+    console.error("❌ Error creating contact:", err.response?.data || err.message);
+    throw err;
+  }
+};

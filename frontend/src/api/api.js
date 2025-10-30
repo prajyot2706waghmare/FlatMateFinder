@@ -25,4 +25,21 @@ export const calculatePropertyValue = (data) => {
   return API.post("/property-calc/calculate", data);
 }
 
+
+// ====================== 📩 CONTACT ROUTE ======================
+
+// ➕ Create a new contact (for a room share)
+export const createContactApi = async (payload) => {
+  // payload: { roomId, name, phone, email, consent, interestedInLoan }
+  console.log("Submitting contact details:", payload);
+
+  try {
+    const { data } = await API.post("/flats/contact", payload);
+    console.log("✅ Contact created successfully in flats", data);
+    return data;
+  } catch (err) {
+    console.error("❌ Error creating contact:", err.response?.data || err.message);
+    throw err;
+  }
+};
 export default API;

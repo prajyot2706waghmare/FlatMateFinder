@@ -191,7 +191,19 @@
 // routes/flatmate.js
 import express from "express";
 import Flatmate from "../models/flatmate.js"; // ensure file and export names match
+// const router = express.Router();
+import FlatmateContact from "../models/flatmateContact.js";
+import { body, validationResult } from "express-validator";
+
 const router = express.Router();
+
+// Validation middleware
+const validate = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty())
+    return res.status(400).json({ success: false, errors: errors.array() });
+  next();
+};
 
 router.get("/", async (req, res) => {
   try {
@@ -220,5 +232,35 @@ router.post("/", async (req, res) => {
   }
 });
 
-export default router;
+// -------------------- CONTACT ROUTE --------------------
+router.post(
+  "/contact",
+  [
+    body("name").trim().notEmpty().withMessage("Name is required"),
+    body("phone").trim().notEmpty().withMessage("Phone is required"),
+    body("email").optional({ checkFalsy: true }).isEmail().withMessage("Email must be valid"),
+  ],
+  validate,
+  async (req, res) => {
+    try {
+      const { roomId, name, phone, email, consent, interestedInLoan } = req.body;
 
+      const contact = new FlatmateContact({
+        roomId,
+        name,
+        phone,
+        email,
+        consent: !!consent,
+        interestedInLoan: !!interestedInLoan,
+      });
+
+      const saved = await contact.save();
+      res.status(201).json({ success: true, data: saved });
+    } catch (err) {
+      console.error("createContact error:", err);
+      res.status(500).json({ success: false, message: "Server error" });
+    }
+  }
+);
+
+export default router;
