@@ -215,27 +215,6 @@ export const calculatePropertyValue = async (req, res) => {
     }
 
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-
-    // const prompt = `
-    //   You are a real estate valuation expert. 
-    //   Estimate the average price per square foot for a property based on:
-    //   - City: ${city}
-    //   - Locality: ${locality}
-    //   - Project Type: ${projectType}
-    //   - Property Type: ${propertyType}
-    //   - Bedrooms: ${bedrooms}, Bathrooms: ${bathrooms || 'N/A'}, Balconies: ${balconies || 0}
-    //   - Size: ${size} sqft
-    //   - Furnishing: ${furnishing}
-    //   - Floor: ${floorNumber || 'N/A'} of ${totalFloors || 'N/A'}
-    //   - Property Age: ${age} years
-    //   - Parking: ${parking || 0} spaces
-    //   - Facing: ${facing || 'N/A'}
-    //   - Amenities: ${amenities.length > 0 ? amenities.join(', ') : 'None'}
-    //   - Context: ${sellOrRent ? "Sale" : "Rent"}
-
-    //   Provide only a numeric value (₹/sqft for sale or ₹/month/sqft for rent).
-    // `;
-
     const prompt = `
 You are a professional Indian real estate valuer with access to the latest 2025 market trends, property listings, and government rate data.
 
