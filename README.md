@@ -24,21 +24,21 @@ Find compatible flatmates based on **location, budget, and preferences** — all
 ---
 
 ## 📁 Project Structure
-FlatmateFinder/
-│
-├── backend/ # Node.js + Express API
-│ ├── models/ # MongoDB schemas
-│ ├── routes/ # API routes
-│ ├── controllers/ # Logic for routes
-│ └── server.js # Entry point
-│
-├── frontend/ # React application
-│ ├── src/
-│ │ ├── pages/ # React pages
-│ │ ├── components/ # Reusable components
-│ │ └── App.jsx # Main app component
-│
-└── README.md # Project documentation
+-FlatmateFinder/
+-│
+-├── backend/ # Node.js + Express API
+-│ ├── models/ # MongoDB schemas
+-│ ├── routes/ # API routes
+-│ ├── controllers/ # Logic for routes
+-│ └── server.js # Entry point
+-│
+-├── frontend/ # React application
+-│ ├── src/
+-│ │ ├── pages/ # React pages
+-│ │ ├── components/ # Reusable components
+-│ │ └── App.jsx # Main app component
+-│
+-└── README.md # Project documentation
 
 ---
 
