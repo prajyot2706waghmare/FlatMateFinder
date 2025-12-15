@@ -9,67 +9,67 @@ const router = express.Router();
 const storage = multer.diskStorage({});
 const upload = multer({ storage });
 
-router.post("/register", upload.single("profileImage"), async (req, res) => {
-  try {
-    const { name, email, password, gender } = req.body;
+  router.post("/register", upload.single("profileImage"), async (req, res) => {
+    console.log(req.body)
+    try {
+      const { name, email, password, gender } = req.body;
+      if (!name || !email || !password || !gender) {
+        return res.status(400).json({ error: "All fields are required" });
+      }
 
-    if (!name || !email || !password || !gender) {
-      return res.status(400).json({ error: "All fields are required" });
+      if (!req.file) {
+        return res.status(400).json({ error: "Profile image is required" });
+      }
+
+      // Check for existing user
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return res.status(400).json({ error: "User already exists" });
+      }
+
+      // ✅ Hash the password
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      // ✅ Upload image to Cloudinary
+      const uploadResult = await cloudinary.uploader.upload(req.file.path, {
+        folder: "user_profiles",
+      });
+
+      // ✅ Create and save user
+      const user = new User({
+        name,
+        email,
+        password: hashedPassword, // ✅ store hashed password
+        gender,
+        profileImage: uploadResult.secure_url,
+        cloudinaryId: uploadResult.public_id,
+      });
+
+      await user.save();
+
+      // ✅ Generate JWT token
+      const token = jwt.sign(
+        { id: user._id, email: user.email },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+      );
+
+      res.status(201).json({
+        message: "✅ User registered successfully",
+        token,
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          gender: user.gender,
+          profileImage: user.profileImage,
+        },
+      });
+    } catch (err) {
+      console.error("❌ Registration Error:", err);
+      res.status(500).json({ error: "Registration failed" });
     }
-
-    if (!req.file) {
-      return res.status(400).json({ error: "Profile image is required" });
-    }
-
-    // Check for existing user
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ error: "User already exists" });
-    }
-
-    // ✅ Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // ✅ Upload image to Cloudinary
-    const uploadResult = await cloudinary.uploader.upload(req.file.path, {
-      folder: "user_profiles",
-    });
-
-    // ✅ Create and save user
-    const user = new User({
-      name,
-      email,
-      password: hashedPassword, // ✅ store hashed password
-      gender,
-      profileImage: uploadResult.secure_url,
-      cloudinaryId: uploadResult.public_id,
-    });
-
-    await user.save();
-
-    // ✅ Generate JWT token
-    const token = jwt.sign(
-      { id: user._id, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" }
-    );
-
-    res.status(201).json({
-      message: "✅ User registered successfully",
-      token,
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        gender: user.gender,
-        profileImage: user.profileImage,
-      },
-    });
-  } catch (err) {
-    console.error("❌ Registration Error:", err);
-    res.status(500).json({ error: "Registration failed" });
-  }
-});
+  });
 
 router.get("/", async (req, res) => {
   // res.send("Flat route works!");

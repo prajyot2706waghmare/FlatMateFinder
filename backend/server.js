@@ -12,7 +12,7 @@ import userAuthRoutes from "./routes/userAuth.js";
 import flatRoutes from "./routes/flats.js";
 import flatmateRoutes from "./routes/flatmate.js";
 import roomShareRoutes from "./routes/roomshare.js";
-
+import adminAuthRoutes from "./routes/adminAuth.js"
 dotenv.config(); // ✅ Load env variables
 
 // ✅ Cloudinary Configuration
@@ -43,7 +43,7 @@ app.use("/flats", flatRoutes);
 app.use("/flatmates", flatmateRoutes);
 app.use("/roomshare", roomShareRoutes);
 app.use("/property-calc", propertyCalcRoutes);
-
+app.use("/admin",adminAuthRoutes);
 // ✅ Root Test Route
 app.get("/", (req, res) => {
   res.send("✅ Backend running successfully with Gemini Flash 2.0 integration!");
