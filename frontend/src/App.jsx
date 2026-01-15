@@ -162,7 +162,6 @@ import PropertyCalculator from "./pages/PropertyCalculator";
 //import FindFlatmate from "./pages/Findflatmate";  // ✅ match file name
 // Modals
 import PostRoomModal from "./components/modals/PostRoomModal";
-
 import "./App.css";
 import "./index.css";
 import FlatHero from "./components/FlatHome";

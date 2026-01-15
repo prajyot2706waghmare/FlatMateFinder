@@ -5,7 +5,7 @@ import cors from "cors";
 import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
 import { GoogleGenerativeAI } from "@google/generative-ai"; 
-
+import chatRoute from "./routes/chat.js"
 import propertyCalcRoutes from "./routes/propertyCalc.js";
 import connectDB from "./config/database.js";
 import userAuthRoutes from "./routes/userAuth.js";
@@ -44,6 +44,7 @@ app.use("/flatmates", flatmateRoutes);
 app.use("/roomshare", roomShareRoutes);
 app.use("/property-calc", propertyCalcRoutes);
 app.use("/admin",adminAuthRoutes);
+app.use("/chat", chatRoute);
 // ✅ Root Test Route
 app.get("/", (req, res) => {
   res.send("✅ Backend running successfully with Gemini Flash 2.0 integration!");

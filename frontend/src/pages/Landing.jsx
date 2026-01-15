@@ -1,5 +1,5 @@
 import React from "react";
-
+import Chatbot from "../components/Chatbot";
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 to-white flex flex-col">
@@ -27,7 +27,7 @@ export default function LandingPage() {
           </nav>
         </div> */}
       </header>
-
+          <Chatbot/>
       {/* HERO */}
       <main className="flex-1 flex items-center justify-center px-6">
         <section className="max-w-5xl w-full grid md:grid-cols-2 gap-8 items-center py-20">
@@ -118,7 +118,7 @@ export default function LandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="w-full border-t bg-white/60 backdrop-blur-sm">
+      {/* <footer className="w-full border-t bg-white/60 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <div className="text-sm text-slate-600">© {new Date().getFullYear()} MyApp. All rights reserved.</div>
           <div className="flex items-center gap-4 text-sm text-slate-600">
@@ -126,7 +126,7 @@ export default function LandingPage() {
             <a href="/privacy" className="hover:underline">Privacy</a>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }
