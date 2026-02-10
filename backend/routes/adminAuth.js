@@ -2,7 +2,9 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import Admin from "../models/admin.js";
 import jwt from "jsonwebtoken";
+import admin from "../config/firebaseadmin.js";
 
+// const router = express.Router();
 const router = express.Router();
 
 // Middleware to authenticate JWT token
@@ -95,9 +97,9 @@ router.post("/register", async (req, res) => {
   try {
     console.log("Request body:", req.body);
 
-    const { name, email, password } = req.body;
-    console.log(name, email, password);
-    if (!name || !email || !password) {
+    const { name, email, password ,phone} = req.body;
+    console.log(name, email, password,phone);
+    if (!name || !email || !password ||!phone) {
       return res.status(400).json({ error: "All fields are required" });
     }
 
@@ -115,6 +117,7 @@ router.post("/register", async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      phone,
     });
 
     await admin.save();
@@ -133,11 +136,37 @@ router.post("/register", async (req, res) => {
         id: admin._id,
         name: admin.name,
         email: admin.email,
+        phone: admin.phone,
       },
     });
   } catch (err) {
     console.error("Registration Error:", err);
     res.status(500).json({ error: "Registration failed" });
+  }
+});
+
+
+router.post("/verify", async (req, res) => {
+  try {
+    console.log("welcome to backend ")
+    const { idToken } = req.body;
+    
+    const decoded = await admin.auth().verifyIdToken(idToken);
+    const phone = decoded.phone_number;
+    
+    let user = await Admin.findOne({ phone });
+    console.log(user)
+    if (!user) user = await Admin.create({ phone });
+
+    const token = jwt.sign(
+      { userId: user._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
+
+    res.json({ token, user });
+  } catch {
+    res.status(401).json({ message: "Authentication failed" });
   }
 });
 

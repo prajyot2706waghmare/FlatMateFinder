@@ -18,6 +18,7 @@ const adminSchema = new mongoose.Schema(
       required: true,
       minlength: 6,
     },
+    phone: { type: String, unique: true, required: true },
   },
   { timestamps: true }
 );
