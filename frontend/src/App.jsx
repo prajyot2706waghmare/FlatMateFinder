@@ -141,6 +141,7 @@ import Footer from "./components/Footer";
 import RoomShareHome from "./components/RoomShareHome"
 import ProtectedRoute from "./components/ProtectdRoute";
 
+import EmailVerification from "./pages/EmailVerification";
 import Login from "./pages/Login";  
 import Register from "./pages/Register"; 
 import Flat from "./pages/Flat";
@@ -175,6 +176,7 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<Hero />} /> */}
           <Route path="/rooms" element={<Rooms />} />
+          <Route path="/verify-email" element={<EmailVerification />} />
           <Route path="/dashboard" element={<> <Dashboard /></>} />
           <Route path="/flat-home" element={<FlatHome/>}/>
           <Route path="/flats" element={<Flat />} />

@@ -100,8 +100,10 @@
 
 import React, { useState } from "react";
 import { registerUser } from "../api/userApi";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -122,28 +124,43 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = new FormData();
-    data.append("name", formData.name);
-    data.append("email", formData.email);
-    data.append("password", formData.password);
-    data.append("gender", formData.gender);
-    if (formData.profileImage) data.append("profileImage", formData.profileImage);
-
+    // 1️⃣ Send OTP
     try {
-      
-      const res = await registerUser(data);
-      alert(res.data.message || "User registered successfully!");
-      setFormData({
-        name: "",
-        email: "",
-        password: "",
-        gender: "",
-        profileImage: null,
+      console.log(formData.email);
+      await fetch("http://localhost:5000/api/send-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formData.email }),
       });
+
+      // 2️⃣ Redirect with form data
+      navigate("/verify-email", { state: { formData } });
     } catch (err) {
-      console.error("❌ Error:", err.response?.data || err.message);
-      alert(err.response?.data?.error || "Registration failed");
+      console.error(err);
+      alert("Failed to send OTP");
     }
+    // const data = new FormData();
+    // data.append("name", formData.name);
+    // data.append("email", formData.email);
+    // data.append("password", formData.password);
+    // data.append("gender", formData.gender);
+    // if (formData.profileImage) data.append("profileImage", formData.profileImage);
+
+    // try {
+
+    //   const res = await registerUser(data);
+    //   alert(res.data.message || "User registered successfully!");
+    //   setFormData({
+    //     name: "",
+    //     email: "",
+    //     password: "",
+    //     gender: "",
+    //     profileImage: null,
+    //   });
+    // } catch (err) {
+    //   console.error("❌ Error:", err.response?.data || err.message);
+    //   alert(err.response?.data?.error || "Registration failed");
+    // }
   };
 
   return (

@@ -60,9 +60,9 @@ import Footer from '../components/Footer'
 function Dashboard() {
   return (
     <div>
-      <Navbar/>
-      <Hero/>
-      <Footer/>
+      <Navbar />
+      <Hero />
+      <Footer />
     </div>
   )
 }
